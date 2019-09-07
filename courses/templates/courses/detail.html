@@ -15,6 +15,14 @@
         <p style="color: black"> 
             {{ course.description }}
         </p>
+        <hr><br>
+        <h1>Course Step </h1>
+        {% for step in course.steps_set.all %}
+          <ul>
+              <li>  <h1>Title {{ step.title }}</h1></li>
+          </ul>
+
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
