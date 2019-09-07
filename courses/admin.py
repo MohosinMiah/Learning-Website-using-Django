@@ -5,6 +5,7 @@ from .models import Courses,Steps
 # Register your models here.
 
         # TabularInline , StackedInline 
+        
 class SetpInline(admin.StackedInline):
     model = Steps
 

@@ -1,0 +1,20 @@
+{% extends "courses/layout/base.html" %}
+
+{% block title %}Hello World {% endblock %}
+
+
+
+{% block body %}
+
+
+<h1>Course Details</h1>
+<div class="container">
+    <div class="row">
+        <h1>Course Name : <strong>{{ course.title }}</strong></h1>
+        <br>
+        <p style="color: black"> 
+            {{ course.description }}
+        </p>
+    </div>
+</div>
+{% endblock %}
