@@ -12,15 +12,19 @@
     <div class="row">
         <h1>Course Name : <strong>{{ course.title }}</strong></h1>
         <br>
-        <p style="color: black"> 
+        <p style="color: black">
             {{ course.description }}
         </p>
         <hr><br>
         <h1>Course Step </h1>
         {% for step in course.steps_set.all %}
-          <ul>
-              <li>  Title {{ step.title }}</li>
-          </ul>
+        <ul>
+
+
+            <li><a href="/courses/{{ course.id }}/{{ step.id }}">{{ step.title }}</a></li>
+
+
+        </ul>
 
         {% endfor %}
     </div>

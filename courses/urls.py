@@ -9,4 +9,9 @@ urlpatterns = [
     path('home',views.home),
 
     path('<int:course_id>', views.detail),
+
+  path('<int:course_id>/<int:step_id>', views.step_detail),
+
+
+
 ]
