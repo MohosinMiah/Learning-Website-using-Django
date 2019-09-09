@@ -32,4 +32,9 @@ def home(request):
 
 class AboutView(TemplateView):
     template_name = "courses/about.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['number_books'] = 6
+        return context
     
