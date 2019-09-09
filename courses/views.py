@@ -1,6 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from .models import Courses,Steps
+from django.views.generic import TemplateView
 # Create your views here.
 
 def index(request):
@@ -28,3 +29,7 @@ def step_detail(request,course_id,step_id):
 
 def home(request):
     return render(request, 'courses/layout/home.html') 
+
+class AboutView(TemplateView):
+    template_name = "courses/about.html"
+    

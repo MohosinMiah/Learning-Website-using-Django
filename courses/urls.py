@@ -1,8 +1,10 @@
 from django.urls import include,path
 
 from . import views
+from courses.views import AboutView
 
 urlpatterns = [
+    path('about', AboutView.as_view()),
 
     path('',views.index),
 
