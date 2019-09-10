@@ -1,0 +1,24 @@
+{% extends "courses/layout/base.html" %}
+
+{% block title %}Hello World {% endblock %}
+
+
+
+{% block body %}
+
+
+<h1>Course Details</h1>
+<hr>
+
+<h3>Course Name  ::   {{ course.title }}</h3>
+<br>
+<h1>Course Stept List </h1>
+<br>
+{%  for step in course.steps_set.all %}
+
+<h2><a href="/courses/{{ course.id }}/{{ step.id }}">{{ step.title }}</a></h2>
+
+
+{% endfor %}
+
+{% endblock %}
