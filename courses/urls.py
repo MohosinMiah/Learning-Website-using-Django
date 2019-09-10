@@ -10,7 +10,7 @@ urlpatterns = [
 
   path('about',AboutView.as_view()),
 
-  path('',CourseList.as_view()),
+  path('',CourseList.as_view(), name='courses-list'),
 
   path('home',views.home),
 

@@ -2,7 +2,7 @@ from django.http import Http404
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import Courses,Steps
-
+from django.urls import reverse
 from django.views.generic import TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 from django.views import generic
@@ -43,9 +43,9 @@ class CourseDetails(DetailView):
 
 
         # We Also Can flow THis Method   
-        def get_object(self):
-            id = self.kwargs.get('pk')
-            return get_object_or_404(Courses, pk=id)
+        # def get_object(self):
+        #     id = self.kwargs.get('pk')
+        #     return get_object_or_404(Courses, pk=id)
 
 def detail(request,course_id):
     try:
