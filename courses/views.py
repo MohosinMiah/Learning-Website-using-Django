@@ -83,3 +83,11 @@ class CreateCourseView(CreateView):
     fields = ["title","description",]
 
 
+    
+class UpdateCourseView(UpdateView):
+    model = Courses
+    template_name = "courses/update_form.html"
+
+    fields = ["title","description",]
+
+

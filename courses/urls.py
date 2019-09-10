@@ -4,7 +4,7 @@ from . import views
 
 
 
-from courses.views import AboutView,CourseList,CourseDetails,CreateCourseView
+from courses.views import AboutView,CourseList,CourseDetails,CreateCourseView,UpdateCourseView
 
 urlpatterns = [
 
@@ -20,7 +20,13 @@ urlpatterns = [
 
   path('<int:pk>/', CourseDetails.as_view()),
   
-  path('create',CreateCourseView.as_view()),
+  path('create',CreateCourseView.as_view(), name='courses-create'),
+
+
+ path('update/<int:pk>/',UpdateCourseView.as_view(), name='courses-edit'),
+
+
+  
 
 
 ]
