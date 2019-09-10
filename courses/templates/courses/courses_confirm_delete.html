@@ -1,0 +1,21 @@
+{% extends "courses/layout/base.html" %}
+
+{% block title %}Hello World {% endblock %}
+
+
+
+{% block body %}
+
+
+<h1>Create New Course </h1>
+<hr>
+
+<form action="" method="post">{% csrf_token %}
+   
+     
+    <input type="submit" value="Delete" >
+    <br>
+    <a href="{% url 'courses-list' %}">Cancel</a>
+</form>
+
+{% endblock %}

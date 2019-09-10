@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.views.generic import TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 from django.views import generic
-
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -89,5 +89,9 @@ class UpdateCourseView(UpdateView):
     template_name = "courses/update_form.html"
 
     fields = ["title","description",]
+
+class DeleteCourseView(DeleteView):
+    model = Courses
+    success_url = reverse_lazy('courses-list')    
 
 

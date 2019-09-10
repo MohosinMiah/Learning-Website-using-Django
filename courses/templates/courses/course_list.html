@@ -2,7 +2,15 @@
 
 {% if courses %}
 {% for course in courses %}
-<li><a href="/courses/{{ course.id }}">{{ course.title }}</a>  -- <a href="/courses/update/{{ course.id }}">Update</a></li>
+<li><a href="/courses/{{ course.id }}">{{ course.title }}</a>  -- 
+
+    <!-- <a href="/courses/update/{{ course.id }} " target="_blank" rel="noopener noreferrer">EDIT</a> -->
+
+    <a href="{% url 'courses-edit' pk=course.id %} " target="_blank" rel="noopener noreferrer">EDIT</a>  ------------
+    <a href="{% url 'courses-delete' pk=course.id %} " target="_blank" onclick="return confirm('Sure To Delete')" rel="noopener noreferrer">Delete</a> 
+
+
+</li>
 {% endfor %}
 
 {% endif %}
