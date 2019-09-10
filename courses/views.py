@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from .models import Courses,Steps
 
-from django.views.generic import TemplateView,ListView,DetailView
+from django.views.generic import TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.views.generic.detail import DetailView
 from django.views import generic
 
@@ -42,15 +42,10 @@ class CourseDetails(DetailView):
         # template_name = "courses/courses_detail.html"
 
 
-
-
-        # def get_context_data(self, **kwargs):
-        #     context = super().get_context_data(**kwargs)
-        #     context['now'] = timezone.now()
-        #     return context
-
-        # def get_object(self):
-        #     return get_object_or_404(Courses, pk=self.kwargs["id"])
+        # We Also Can flow THis Method   
+        def get_object(self):
+            id = self.kwargs.get('pk')
+            return get_object_or_404(Courses, pk=id)
 
 def detail(request,course_id):
     try:
@@ -83,3 +78,8 @@ class AboutView(TemplateView):
         context['number_books'] = 6
         return context
     
+class CreateCourseView(CreateView):
+    model = Courses
+    fields = ["title","description",]
+
+

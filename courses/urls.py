@@ -4,7 +4,7 @@ from . import views
 
 
 
-from courses.views import AboutView,CourseList,CourseDetails
+from courses.views import AboutView,CourseList,CourseDetails,CreateCourseView
 
 urlpatterns = [
 
@@ -19,7 +19,8 @@ urlpatterns = [
   path('<int:course_id>/<int:step_id>', views.step_detail),
 
   path('<int:pk>/', CourseDetails.as_view()),
-
+  
+  path('create',CreateCourseView.as_view()),
 
 
 ]
