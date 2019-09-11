@@ -7,7 +7,8 @@ from django.views.generic import TemplateView,ListView,DetailView,CreateView,Upd
 from django.views.generic.detail import DetailView
 from django.views import generic
 from django.urls import reverse_lazy
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.conf import settings
 # Create your views here.
 
 # Function Based DIsplay List 
@@ -84,14 +85,36 @@ class CreateCourseView(CreateView):
 
 
     
-class UpdateCourseView(UpdateView):
+class UpdateCourseView(LoginRequiredMixin,UpdateView):
     model = Courses
     template_name = "courses/update_form.html"
 
     fields = ["title","description",]
 
-class DeleteCourseView(DeleteView):
+class DeleteCourseView(LoginRequiredMixin,DeleteView):
     model = Courses
-    success_url = reverse_lazy('courses-list')    
+
+
+
+    success_url = reverse_lazy('courses-list')   
+
+    def get_login_url(self):
+        """
+        Override this method to override the login_url attribute.
+        """
+        # login_url = self.login_url or settings.LOGIN_URL
+        # if not login_url:
+        #     raise ImproperlyConfigured(
+        #         '{0} is missing the login_url attribute. Define {0}.login_url, settings.LOGIN_URL, or override '
+        #         '{0}.get_login_url().'.format(self.__class__.__name__)
+        #     )
+        return str("/admin/login/?next=/admin/")
+
+# Before User Check User Status 
+    # def get_queryset(self):
+    #     if not self.request.user.is_superuser:
+    #         return self.model.objects.filter(coach=self.request.user)
+    #     return self.model.objects.all()    
+
 
 
