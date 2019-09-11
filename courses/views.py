@@ -19,11 +19,13 @@ def index(request):
 
 # Class Base Display ListView 
 
-class CourseList(ListView):
+class CourseList(CreateView,ListView):
 
     context_object_name = "courses"
 
     model = Courses
+
+    fields = ['title','description']
 
     template_name = "courses/course_list.html"
 
