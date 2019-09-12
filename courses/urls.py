@@ -2,9 +2,11 @@ from django.urls import include,path
 
 from . import views
 
+from . import forms
 
 
-from courses.views import AboutView,CourseList,CourseDetails,CreateCourseView,UpdateCourseView,DeleteCourseView
+
+from courses.views import AboutView,CourseList,CourseDetails,CreateCourseView,UpdateCourseView,DeleteCourseView,SuggestionView
 
 urlpatterns = [
 
@@ -27,6 +29,8 @@ urlpatterns = [
 
 
  path('delete/<int:pk>/',DeleteCourseView.as_view(), name='courses-delete'),
+
+ path('suggestion',SuggestionView.as_view()),
 
 
 

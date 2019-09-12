@@ -1,5 +1,5 @@
-
-
+{% extends "courses/layout/base.html" %}
+{% block body %}
 {% if courses %}
 {% for course in courses %}
 <li><a href="/courses/{{ course.id }}">{{ course.title }}</a>  -- 
@@ -15,7 +15,8 @@
 
 
 {% endfor %}
-<br><br>
+
+
 <hr>
 
 {% if user.is_authenticated %}
@@ -26,3 +27,5 @@
 
 {% endif %}
 {% endif %}
+
+{% endblock %}
