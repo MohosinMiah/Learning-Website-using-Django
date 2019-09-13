@@ -6,7 +6,7 @@ from . import forms
 
 
 
-from courses.views import AboutView,CourseList,CourseDetails,CreateCourseView,UpdateCourseView,DeleteCourseView,SuggestionView
+from courses.views import AboutView,CourseList,CourseDetails,CreateCourseView,UpdateCourseView,DeleteCourseView
 
 urlpatterns = [
 
@@ -30,7 +30,7 @@ urlpatterns = [
 
  path('delete/<int:pk>/',DeleteCourseView.as_view(), name='courses-delete'),
 
- path('suggestion',SuggestionView.as_view()),
+ path('suggestion',views.suggestionView),
 
 
 

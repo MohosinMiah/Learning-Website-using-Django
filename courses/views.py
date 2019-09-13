@@ -10,6 +10,9 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from . import forms
 from django.conf import settings
+from django.http import HttpResponseRedirect
+# import django.contrib import messages
+from django.core.mail import BadHeaderError, send_mail
 # Create your views here.
 
 # Function Based DIsplay List 
@@ -82,14 +85,24 @@ class AboutView(TemplateView):
         context['number_books'] = 6
         return context
 
-class SuggestionView(TemplateView):
-    template_name = "courses/suggestion.html"    
+def suggestionView(request):
+    if request.method == 'POST':
+        form = forms.SuggesstionForm(request.POST)
+        if form.is_valid():
+            send_mail(
+            'Subject',
+            'Message.',
+            'hamza1610330816@gmail.com',
+            ['hamza161033@gmail.com'],
+            )
+            print("OKKKKKKKKK")
+           
+    form = forms.SuggesstionForm()
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = forms.SuggesstionForm()
-        return context
+  
+    return render(request, "courses/suggestion.html",{'form':form}) 
 
+    
     
 class CreateCourseView(CreateView):
     model = Courses

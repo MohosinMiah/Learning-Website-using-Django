@@ -13,9 +13,10 @@
         <h1> Send Suggestion</strong></h1>
         <br>
         <hr>
-        <p style="color: black"> 
-            {{form.as_p }}
-        </p>
+        <form action="" method="POST">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+        </form>
         <hr><br>
        
     </div>
