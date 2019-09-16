@@ -7,10 +7,24 @@
 {% block body %}
 
 
-<h1>Step  Details</h1>
+<h1>Step Details</h1>
 <div class="container">
     <div class="row">
         <h1> Send Suggestion</strong></h1>
+        {% if form.errors %}
+        {% for field in form %}
+        {% for error in field.errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}
         <br>
         <hr>
         <form action="" method="POST">{% csrf_token %}
@@ -18,7 +32,7 @@
             <input type="submit" value="Save">
         </form>
         <hr><br>
-       
+
     </div>
 </div>
 {% endblock %}
