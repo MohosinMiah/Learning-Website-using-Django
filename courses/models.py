@@ -26,11 +26,12 @@ class Steps(models.Model):
     course = models.ForeignKey(Courses,on_delete=models.CASCADE)
 
     class  Meta:
+        abstract = True
         ordering = ["order"]
     
 
     def __str__(self):
         return self.title
 
-
-    
+class Text(Steps):
+    content = models.TextField(blank=True,default="")
