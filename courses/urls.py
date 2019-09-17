@@ -20,7 +20,7 @@ urlpatterns = [
 
   path('<int:course_id>/<int:step_id>', views.step_detail),
 
-  path('<int:pk>/', CourseDetails.as_view()),
+  path('<int:pk>/', views.detail),
   
   path('create',CreateCourseView.as_view(), name='courses-create'),
 

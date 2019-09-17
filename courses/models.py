@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.db import models
 from django.urls import reverse
+from itertools import chain
+
 # Create your models here.
 
 #Courses Table Create
@@ -35,3 +37,10 @@ class Steps(models.Model):
 
 class Text(Steps):
     content = models.TextField(blank=True,default="")
+
+
+class Quizs(Steps):
+    total_question = models.IntegerField(default=4)
+
+    class  Meta:
+        verbose_name_plural = 'Quizess'

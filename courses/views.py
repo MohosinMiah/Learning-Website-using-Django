@@ -1,7 +1,7 @@
 from django.http import Http404
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from .models import Courses,Steps
+from .models import Courses,Steps,Quizs,Text
 from django.urls import reverse
 from django.views.generic import TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.views.generic.detail import DetailView
@@ -13,6 +13,7 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 # import django.contrib import messages
 from django.core.mail import BadHeaderError, send_mail
+from itertools import chain
 # Create your views here.
 
 # Function Based DIsplay List 
@@ -46,7 +47,8 @@ class CourseDetails(DetailView):
 
         context_object_name = "course"
 
-        # template_name = "courses/courses_detail.html"
+
+        template_name = "courses/courses_detail.html"
 
 
         # We Also Can flow THis Method   
@@ -54,12 +56,17 @@ class CourseDetails(DetailView):
         #     id = self.kwargs.get('pk')
         #     return get_object_or_404(Courses, pk=id)
 
-def detail(request,course_id):
+def detail(request,pk):
     try:
-        course = Courses.objects.get(pk=course_id)
+        course = get_object_or_404(Courses,pk=pk)
+        steps = sorted(chain(course.text_set.all(),course.quizs_set.all()),key=lambda step: step.order)
+
     except Courses.DoesNotExist:
         raise Http404("Courses does not exist")
-    return render(request, 'courses/detail.html', {'course': course})
+    return render(request, 'courses/courses_detail.html', {
+        'course': course,
+        'steps' :steps
+        })
 
 
 
@@ -68,7 +75,7 @@ def detail(request,course_id):
 
 def step_detail(request,course_id,step_id):
     try:
-        setp = Steps.objects.get(course_id=course_id, pk=step_id)
+        setp = Text.objects.get(course_id=course_id, pk=step_id)
     except Courses.DoesNotExist:
         raise Http404("Courses does not exist")
     return render(request, 'courses/step_detail.html', {'setp': setp})

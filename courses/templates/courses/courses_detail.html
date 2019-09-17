@@ -14,7 +14,7 @@
 <br>
 <h1>Course Stept List </h1>
 <br>
-{%  for step in course.steps_set.all %}
+{%  for step in steps %}
 
 <h2><a href="/courses/{{ course.id }}/{{ step.id }}">{{ step.title }}</a></h2>
 
