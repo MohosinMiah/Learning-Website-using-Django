@@ -58,3 +58,39 @@ class Quizs(Steps):
 
     class  Meta:
         verbose_name_plural = 'Quizess'
+
+
+
+class Question(models.Model):
+
+    quiz = models.ForeignKey(Quizs,on_delete=models.CASCADE)
+    order = models.IntegerField(default=0)
+    prompt = models.TextField()
+
+    class Meta:
+        
+        ordering = ['order',]
+
+    def get_absolute_url(self):
+
+        return self.quiz.get_absolute_url()
+
+
+    def __str__(self):
+        return self.prompt    
+
+class Answer(models.Model):
+    answer = models.ForeignKey(Question,on_delete=models.CASCADE)        
+    order = models.IntegerField(default=0)
+    text = models.CharField(max_length=300)
+    correct = models.BooleanField(default=False)
+        
+
+    class Meta:
+        
+        ordering = ['order',]
+
+
+
+    def __str__(self):
+        return self.text    

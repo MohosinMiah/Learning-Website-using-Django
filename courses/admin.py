@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Courses,Text,Quizs
+from .models import Courses,Text,Quizs,Question,Answer
 
 # Register your models here.
 
@@ -19,3 +19,8 @@ admin.site.register(Courses,CoursesAdmin)
 admin.site.register(Text)
 
 admin.site.register(Quizs)
+
+admin.site.register(Question)
+
+admin.site.register(Answer)
+
