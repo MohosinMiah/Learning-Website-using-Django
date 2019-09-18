@@ -17,10 +17,14 @@ urlpatterns = [
   path('home',views.home),
 
   
+path('<int:pk>/', views.detail),
 
-  path('<int:course_id>/<int:step_id>', views.step_detail),
+  path('<int:course_id>/t<int:step_id>', views.text_detail,name='text_detail'),
 
-  path('<int:pk>/', views.detail),
+  path('<int:course_id>/q<int:step_id>', views.quiz_detail,name='quiz_detail'),
+
+
+  
   
   path('create',CreateCourseView.as_view(), name='courses-create'),
 

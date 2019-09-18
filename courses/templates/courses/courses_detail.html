@@ -16,7 +16,9 @@
 <br>
 {%  for step in steps %}
 
-<h2><a href="/courses/{{ course.id }}/{{ step.id }}">{{ step.title }}</a></h2>
+<!-- <h2><a href="/courses/{{ course.id }}/{{ step.id }}">{{ step.title }}</a></h2> -->
+<h2><a href="{{ step.get_absolute_url }}">{{ step.title }}</a></h2>
+
 
 
 {% endfor %}

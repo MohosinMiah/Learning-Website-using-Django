@@ -14,6 +14,7 @@ from django.http import HttpResponseRedirect
 # import django.contrib import messages
 from django.core.mail import BadHeaderError, send_mail
 from itertools import chain
+
 # Create your views here.
 
 # Function Based DIsplay List 
@@ -63,6 +64,7 @@ def detail(request,pk):
 
     except Courses.DoesNotExist:
         raise Http404("Courses does not exist")
+
     return render(request, 'courses/courses_detail.html', {
         'course': course,
         'steps' :steps
@@ -73,12 +75,23 @@ def detail(request,pk):
 
 
 
-def step_detail(request,course_id,step_id):
+def text_detail(request,course_id,step_id):
     try:
         setp = Text.objects.get(course_id=course_id, pk=step_id)
     except Courses.DoesNotExist:
         raise Http404("Courses does not exist")
     return render(request, 'courses/step_detail.html', {'setp': setp})
+
+
+
+def quiz_detail(request,course_id,step_id):
+    try:
+        setp = Quizs.objects.get(course_id=course_id, pk=step_id)
+    except Quizs.DoesNotExist:
+        raise Http404("Courses does not exist")
+    return render(request, 'courses/step_detail.html', {'setp': setp})
+
+
 
 
 def home(request):
