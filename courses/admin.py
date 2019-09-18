@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Courses,Text,Quizs,Question,Answer
+from .models import Courses,Text,Quizs,Question,Answer,MultipleChoiseQuestion,TrueFalseQuestion
 
 # Register your models here.
 
@@ -20,7 +20,9 @@ admin.site.register(Text)
 
 admin.site.register(Quizs)
 
-admin.site.register(Question)
+admin.site.register(MultipleChoiseQuestion)
+admin.site.register(TrueFalseQuestion)
+
 
 admin.site.register(Answer)
 
