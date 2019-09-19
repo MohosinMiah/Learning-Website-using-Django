@@ -36,6 +36,8 @@ path('<int:pk>/', views.detail),
 
  path('suggestion',views.suggestionView),
 
+ path('<int:course_id>/create/quiz',views.quiz_create,name="create_quiz"),
+
 
 
 ]

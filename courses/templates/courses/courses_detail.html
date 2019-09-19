@@ -23,4 +23,11 @@
 
 {% endfor %}
 
+
+{%  if user.is_authenticated  %}
+
+<a href="{% url 'create_quiz' course_id=course.id %}" type="button">Create Quiz</a>
+
+{% endif %}
+
 {% endblock %}

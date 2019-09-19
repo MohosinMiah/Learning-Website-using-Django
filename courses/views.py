@@ -16,6 +16,12 @@ from django.core.mail import BadHeaderError, send_mail
 from itertools import chain
 
 
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+
+
+
 
 # Create your views here.
 
@@ -162,6 +168,31 @@ class DeleteCourseView(LoginRequiredMixin,DeleteView):
     #     if not self.request.user.is_superuser:
     #         return self.model.objects.filter(coach=self.request.user)
     #     return self.model.objects.all()    
+
+
+@login_required
+def quiz_create(request,course_id):
+    course = get_object_or_404(Courses, pk=course_id)
+    form = forms.QuizForm()
+
+
+    if request.method == "POST":
+        form = forms.QuizForm(request.POST)
+        if form.is_valid():
+            quiz = form.save(commit=False)
+            quiz.course = course
+            quiz.save()
+            # add_message() missing 2 required positional arguments: 'level' and 'message'
+            messages.add_message(request,messages.SUCCESS,"message","Quiz Create Successfully !")
+
+            return HttpResponseRedirect(quiz.get_absolute_url())
+
+    else:
+        return render(request, 'courses/quiz_form.html',{'form':form,'course':course}) 
+
+    
+
+
 
 
 
