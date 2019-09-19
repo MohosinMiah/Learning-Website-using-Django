@@ -193,6 +193,19 @@ def quiz_create(request,course_id):
     
 
 
+@login_required
+def quiz_edit(request,course_id,quiz_id):
+
+    quiz = get_object_or_404(Quizs,pk=quiz_id,course_id=course_id)
+
+    course = get_object_or_404(Courses,pk=course_id)
+
+    form = forms.QuizForm(instance=quiz)
+
+    return render(request, 'courses/quiz_form.html',{'form':form,'quiz':quiz}) 
+
+
+
 
 
 

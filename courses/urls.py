@@ -39,5 +39,9 @@ path('<int:pk>/', views.detail),
  path('<int:course_id>/create/quiz',views.quiz_create,name="create_quiz"),
 
 
+  path('<int:course_id>/edit/quiz/<int:quiz_id>',views.quiz_edit,name="edit_quiz"),
+
+
+
 
 ]

@@ -8,12 +8,16 @@
 
 <h1>Course Name : {{ course.title }}</h1>
 
-<h1>Create Quiz</h1>
+<h1>{{ form.instance.title|default:"Create Quiz"}}</h1>
 <hr>
 
 <form action="" method="post">{% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Save">
 </form>
+
+
+
+
 
 {% endblock %}

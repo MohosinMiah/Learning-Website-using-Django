@@ -7,7 +7,7 @@
 {% block body %}
 
 
-<h1>{{ setp.title }}  Details</h1>
+<h1>{{ setp.course.title }}  Details</h1>
 <div class="container">
     <div class="row">
         <h1> Title : <strong>{{ setp.title }}</strong></h1>
@@ -19,5 +19,11 @@
         <hr><br>
        
     </div>
+    {%  if user.is_authenticated  %}
+    
+    <a href="{% url 'create_quiz' course_id=setp.course.id %}" type="button">Create Quiz</a>    
+    <a href="{% url 'edit_quiz' course_id=setp.course.id quiz_id=setp.pk %}" type="button">Edit Quiz</a>    
+
+    {% endif %}
 </div>
 {% endblock %}
