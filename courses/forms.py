@@ -2,6 +2,9 @@ from django import forms
 from django.core import validators
 
 
+from . import models
+
+
 
 def must_be_empty(value):
     if value:
@@ -37,3 +40,34 @@ class SuggesstionForm(forms.Form):
     #         raise forms.ValidationError("Leave It Empty")
     #     return data
        
+
+
+class  QuizForm(forms.ModelForm):
+
+    class Meta:
+        model = models.Quizs
+        fields = [
+            'title',
+            'description',
+            'order',
+            'total_question'
+        ]
+
+class TrueFalseQuestionForm(forms.ModelForm):
+    class Meta:
+        model = models.TrueFalseQuestion
+        fields = [
+            'order',
+            'prompt'
+        ]
+
+
+
+class MultipleChoiseQuestionForm(forms.ModelForm):
+    class Meta:
+        model = models.MultipleChoiseQuestion
+        fields = [
+            'order',
+            'prompt',
+            'shuffle_answer'
+        ]        

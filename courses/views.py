@@ -15,6 +15,8 @@ from django.http import HttpResponseRedirect
 from django.core.mail import BadHeaderError, send_mail
 from itertools import chain
 
+
+
 # Create your views here.
 
 # Function Based DIsplay List 
